@@ -11,14 +11,16 @@ export class UsuarioReadComponent implements OnInit {
 
   usuarios: Usuario[] = [];
 
-  constructor(private usuarioService : UsuarioService) { }
+  constructor(private usuarioService: UsuarioService) { }
 
   ngOnInit() {
-    return this.usuarioService.readAll().subscribe(
+    this.usuarioService.readAll().subscribe(
       (usuariosRetornados: any[]) => {
         this.usuarios = usuariosRetornados
       }, error => console.log(error)
     )
+
+    console.log(this.usuarios)
   }
 
 }

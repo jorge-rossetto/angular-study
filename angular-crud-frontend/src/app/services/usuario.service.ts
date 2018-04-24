@@ -8,7 +8,13 @@ export class UsuarioService {
         
     }
 
+    /*
     readAll() {
         return this.http.get('/api/usuario').map((response : Response) => response.json());
     }
+    */
+
+   readAll() {
+    return this.http.get('/api/usuario');
+}
 }
