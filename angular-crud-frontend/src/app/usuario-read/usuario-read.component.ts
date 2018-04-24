@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { UsuarioService } from '../services/usuario.service';
 import { Usuario } from '../model/usuario.model';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/retry';
+import 'rxjs/add/observable/of';
+
 
 @Component({
   selector: 'app-usuario-read',
@@ -9,18 +15,22 @@ import { Usuario } from '../model/usuario.model';
 })
 export class UsuarioReadComponent implements OnInit {
 
-  usuarios: Usuario[] = [];
+  usuarios: Observable<Usuario[]>;
 
-  constructor(private usuarioService: UsuarioService) { }
+  posts: Observable<any>;
+
+  constructor(private http: HttpClient, private usuarioService: UsuarioService) { }
 
   ngOnInit() {
-    this.usuarioService.readAll().subscribe(
-      (usuariosRetornados: any[]) => {
-        this.usuarios = usuariosRetornados
-      }, error => console.log(error)
-    )
+    this.usuarios = this.usuarioService.readAll()
+      .catch(error => {
+        console.log(error);
+        return Observable.of(error);
+      });
 
-    console.log(this.usuarios)
+    this.usuarios.subscribe(res => console.log(JSON.stringify(res)));
+    this.usuarios.subscribe(res => console.dir(res));
+
   }
 
 }

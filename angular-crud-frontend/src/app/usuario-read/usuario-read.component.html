@@ -1,14 +1,8 @@
 <div class="container color-dark">
   <div class="col">
     <p>Lista de Usuários</p>
-    <p class="life-container">
-      Usuario 1
-    </p>
-    <p class="life-container">
-      Usuario 1
-    </p>
-    <p class="life-container">
-      Usuario 1
+    <p *ngFor="let usuario of usuarios | async" class="life-container">
+      {{ usuario.id }} - {{ usuario.nome }}
     </p>
   </div>
 </div>
