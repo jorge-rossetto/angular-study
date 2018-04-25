@@ -1,15 +1,54 @@
-<div class="container color-dark">
-  <div class="col">
-    <p>Lista de Usuários</p>
-    <p *ngFor="let usuario of usuarios | async" class="life-container">
-      {{ usuario.id }} - {{ usuario.nome }}
-    </p>
-    <p>
-      <a [routerLink]="['/usuario-create']">
-        <button class="btn btn-success pull-right">Incluir Novo</button>
-      </a>
-      <!-- <a routerLink="/Service/Sign_in"><button class="btn btn-success pull-right" > Add Customer</button></a> -->
-    </p>
+<!-- TODO mensagem nenhum usuario encontrado -->
+
+<!-- esse layout bonitão foi roubado daqui: -->
+<!-- https://www.tutorialrepublic.com/codelab.php?topic=bootstrap&file=table-with-search-column-feature -->
+<div class="container">
+  <div class="table-wrapper">
+    <div class="table-title">
+      <div class="row">
+        <div class="col-sm-6">
+          <h2>
+            <b>Usuários</b>
+          </h2>
+        </div>
+        <div class="col-sm-6">
+          <div class="search-box">
+            <div class="input-group">
+              <input type="text" id="search" class="form-control" placeholder="Filtrar por nome (ainda não funciona)">
+              <span class="input-group-addon">
+                <i class="material-icons">&#xE8B6;</i>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th style="width: 82%;">Nome</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let usuario of usuarios | async">
+          <td>{{ usuario.id }}</td>
+          <td>{{ usuario.nome }}</td>
+          <td>
+            <a href="#" class="edit" title="Editar" data-toggle="tooltip">
+              <i class="material-icons">&#xE254;</i>
+            </a>
+            <a href="#" class="delete" title="Excluir" data-toggle="tooltip">
+              <i class="material-icons">&#xE872;</i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  <!-- TODO mensagem nenhum usuario encontrado -->
+  <div>
+    <a [routerLink]="['/usuario-create']">
+      <button class="btn btn-primary pull-right">Incluir Novo</button>
+    </a>
+  </div>
 </div>

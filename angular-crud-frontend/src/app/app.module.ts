@@ -18,6 +18,7 @@ import { UsuarioCreateComponent } from './usuario-create/usuario-create.componen
     UsuarioCreateComponent
   ],
   imports: [
+    NgbModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
     HttpClientModule
