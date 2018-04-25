@@ -4,5 +4,12 @@
     <p *ngFor="let usuario of usuarios | async" class="life-container">
       {{ usuario.id }} - {{ usuario.nome }}
     </p>
+    <p>
+      <a [routerLink]="['/usuario-create']">
+        <button class="btn btn-success pull-right">Incluir Novo</button>
+      </a>
+      <!-- <a routerLink="/Service/Sign_in"><button class="btn btn-success pull-right" > Add Customer</button></a> -->
+    </p>
   </div>
+  <!-- TODO mensagem nenhum usuario encontrado -->
 </div>
