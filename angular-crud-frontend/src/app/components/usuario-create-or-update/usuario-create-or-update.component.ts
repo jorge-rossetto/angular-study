@@ -13,7 +13,7 @@ export class UsuarioCreateOrUpdateComponent implements OnInit {
   id: any;
   updateMode: boolean;
   submitButtonTitle: string;
-  usuario: Usuario = new Usuario();
+  usuario: Usuario;
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private usuarioService: UsuarioService) {
   }

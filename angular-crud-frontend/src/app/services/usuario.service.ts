@@ -25,7 +25,6 @@ export class UsuarioService {
     }
 
     readById(id: number): Observable<Usuario> {
-
         return this.http.get<Usuario>(this.resourceUrl + id);
     }
 
@@ -40,6 +39,10 @@ export class UsuarioService {
         this.http.put(this.resourceUrl, usuario).subscribe(
             response => console.dir(response), error => console.dir(error)
         );
+    }
+
+    delete(id: number) {
+        return this.http.delete(this.resourceUrl + id);
     }
 
 }

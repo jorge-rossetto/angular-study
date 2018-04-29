@@ -24,7 +24,7 @@
               <a title="Editar" [routerLink]="['/usuario-create-or-update/']" [queryParams]="{id: usuario.id}">
                 <i class="material-icons">edit</i>
               </a>
-              <a title="Excluir">
+              <a title="Excluir" (click)="onClickExcluir(usuario.id)">
                 <i class="material-icons">delete</i>
               </a>
             </td>
@@ -39,3 +39,5 @@
     </div>
   </div>
 </div>
+
+<!-- TODO confirmar exclusão com um dialog modal -->

@@ -2,9 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../services/usuario.service';
 import { Usuario } from '../../model/usuario.model';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/retry';
-import 'rxjs/add/observable/of';
 
 @Component({
   selector: 'app-usuario-read-all',
@@ -17,11 +14,21 @@ export class UsuarioReadAllComponent implements OnInit {
   constructor(private usuarioService: UsuarioService) { }
 
   ngOnInit() {
-    this.usuarios = this.usuarioService.readAll();
-    // TODO try catch?
+    this.loadModel();
+  }
 
-    // this.usuarios.subscribe(res => console.log(JSON.stringify(res)));
-    // this.usuarios.subscribe(res => console.dir(res));
+  loadModel() {
+    this.usuarios = this.usuarioService.readAll();
+  }
+
+  onClickExcluir(id: number) {
+    this.usuarioService.delete(id).subscribe(
+      (response: Response) => {
+        console.log("delete OK");
+        this.loadModel();
+      },
+      error => console.dir(error)
+    );
 
   }
 
