@@ -10,12 +10,12 @@ public class UsuarioRepository {
     private static Map<Long, Usuario> usuarios = new HashMap<Long, Usuario>();
     
     static {
-        usuarios.put(1L, new Usuario(1L, "Jorge"));
-        usuarios.put(2L, new Usuario(2L, "Leo"));
-        usuarios.put(3L, new Usuario(3L, "Aline"));
-        usuarios.put(4L, new Usuario(4L, "Altair"));
-        usuarios.put(5L, new Usuario(5L, "Coronel"));
-        usuarios.put(6L, new Usuario(6L, "Daniel"));
+        usuarios.put(1L, new Usuario(1L, "Jorge", "jorgerst@gmail.com"));
+        usuarios.put(2L, new Usuario(2L, "Leo", "leo@serpro.gov.br"));
+        usuarios.put(3L, new Usuario(3L, "Aline", "aline@gmail.com"));
+        usuarios.put(4L, new Usuario(4L, "Altair", "altair@serpro.gov.br"));
+        usuarios.put(5L, new Usuario(5L, "Coronel", "coronel@gmail.com"));
+        usuarios.put(6L, new Usuario(6L, "Daniel", "daniel@serpro.gov.br"));
     }
     
     public void create(Usuario usuario) {
