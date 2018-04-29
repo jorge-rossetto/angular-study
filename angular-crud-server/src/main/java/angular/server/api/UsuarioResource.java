@@ -25,12 +25,14 @@ public class UsuarioResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public void create(Usuario usuario) {
+        System.out.println("POST - usuario = " + usuario);
         usuarioRepository.create(usuario);
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Usuario> readAll() {
+        System.out.println("GET");
         return usuarioRepository.readAll();
     }
 
@@ -38,18 +40,21 @@ public class UsuarioResource {
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Usuario readById(@PathParam("id") Long id) {
+        System.out.println("GET - id = " + id);
         return usuarioRepository.readById(id);
     }
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     public void update(Usuario usuario) {
+        System.out.println("PUT - usuario = " + usuario);
         usuarioRepository.update(usuario);
     }
     
     @DELETE
     @Path("/{id}")
     public void delete(@PathParam("id") Long id) {
+        System.out.println("DELETE - id = " + id);
         usuarioRepository.delete(id);
     }
 
