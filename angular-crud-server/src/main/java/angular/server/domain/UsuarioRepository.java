@@ -19,7 +19,12 @@ public class UsuarioRepository {
     }
     
     public void create(Usuario usuario) {
-        createOrUpdate(usuario);
+        usuario.setId(nextId());
+        usuarios.put(usuario.getId(), usuario);
+    }
+
+    private Long nextId() {
+        return usuarios.size() + 1L;
     }
 
     public List<Usuario> readAll() {
@@ -31,14 +36,11 @@ public class UsuarioRepository {
     }
 
     public void update(Usuario usuario) {
-        createOrUpdate(usuario);
+        usuarios.put(usuario.getId(), usuario);
     }
 
     public void delete(Long id) {
         usuarios.remove(id);
     }
 
-    private void createOrUpdate(Usuario usuario) {
-        usuarios.put(usuario.getId(), usuario);
-    }
 }
