@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { UsuarioCreateComponent } from './components/usuario-create/usuario-create.component';
+import { UsuarioCreateOrUpdateComponent } from './components/usuario-create-or-update/usuario-create-or-update.component';
 import { UsuarioReadAllComponent } from './components/usuario-read-all/usuario-read-all.component';
 
 const routes: Routes = [
@@ -9,8 +9,8 @@ const routes: Routes = [
     component: UsuarioReadAllComponent
   },
   {
-    path: 'usuario-create',
-    component: UsuarioCreateComponent
+    path: 'usuario-create-or-update',
+    component: UsuarioCreateOrUpdateComponent
   }
 ];
 

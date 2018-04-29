@@ -4,10 +4,10 @@ import { Usuario } from '../../model/usuario.model';
 import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
-  selector: 'app-usuario-create',
-  templateUrl: './usuario-create.component.html'
+  selector: 'app-usuario-create-or-update',
+  templateUrl: './usuario-create-or-update.component.html'
 })
-export class UsuarioCreateComponent implements OnInit {
+export class UsuarioCreateOrUpdateComponent implements OnInit {
 
   usuario: Usuario = new Usuario();
 
