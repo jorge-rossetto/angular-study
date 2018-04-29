@@ -21,7 +21,7 @@
             <td>{{ usuario.nome }}</td>
             <td>{{ usuario.email }}</td>
             <td>
-              <a title="Editar">
+              <a title="Editar" [routerLink]="['/usuario-create-or-update/']" [queryParams]="{id: usuario.id}">
                 <i class="material-icons">edit</i>
               </a>
               <a title="Excluir">
@@ -32,7 +32,7 @@
         </tbody>
       </table>
       <div>
-        <a [routerLink]="['/usuario-create-or-update']">
+        <a [routerLink]="['/usuario-create-or-update/']">
           <button>Incluir Novo</button>
         </a>
       </div>
