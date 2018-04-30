@@ -18,12 +18,26 @@
             <label for="nome">Nome</label>
           </div>
         </div>
+
         <div class="row">
           <div class="input-field col s12">
             <input id="email" name="email" type="email" class="validate" [(ngModel)]="usuario.email" required>
             <label for="email" data-error="E-mail inválido.">E-mail</label>
           </div>
         </div>
+
+        <div class="row">
+          <!-- http://materializecss.com/pickers.html -->
+          <div class="input-field col s12">
+
+            <!-- TODO alterar o formato de exibicao da data (tem q ser diferente do formato interno) -->
+
+            <input id="dataNascimento" name="dataNascimento" type="text" class="datepicker" materialize="pickadate" [materializeParams]="[{ format: 'yyyy-mm-dd', closeOnSelect: true }]"
+              [(ngModel)]="usuario.dataNascimento">
+            <label for="dataNascimento">Data de nascimento</label>
+          </div>
+        </div>
+
         <div class="row">
           <!-- http://materializecss.com/buttons.html -->
           <button class="btn waves-effect waves-light right" type="submit" name="action" [disabled]="!angularForm.valid">{{ submitButtonTitle }}

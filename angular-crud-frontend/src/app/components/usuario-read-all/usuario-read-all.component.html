@@ -27,6 +27,7 @@
             <th>ID</th>
             <th>Nome</th>
             <th>E-mail</th>
+            <th>Data de Nascimento</th>
           </tr>
         </thead>
         <tbody>
@@ -34,6 +35,7 @@
             <td>{{ usuario.id }}</td>
             <td>{{ usuario.nome }}</td>
             <td>{{ usuario.email }}</td>
+            <td>{{ usuario.dataNascimento | date: 'dd/MM/yyyy' }}</td>
             <td>
               <a title="Editar" [routerLink]="['/usuario-create-or-update/']" [queryParams]="{id: usuario.id}">
                 <i class="material-icons">edit</i>
