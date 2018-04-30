@@ -10,6 +10,7 @@ import { Observable } from 'rxjs/Observable';
 export class UsuarioReadAllComponent implements OnInit {
 
   usuarios: Observable<Usuario[]>;
+  usuarioMarkedToDelete: Usuario;
 
   constructor(private usuarioService: UsuarioService) { }
 
@@ -21,15 +22,18 @@ export class UsuarioReadAllComponent implements OnInit {
     this.usuarios = this.usuarioService.readAll();
   }
 
-  onClickExcluir(id: number) {
-    this.usuarioService.delete(id).subscribe(
+  onClickDelete(usuario: Usuario) {
+    this.usuarioMarkedToDelete = usuario;
+  }
+
+  onClickConfirmDelete() {
+    this.usuarioService.delete(this.usuarioMarkedToDelete.id).subscribe(
       (response: Response) => {
         console.log("delete OK");
         this.loadModel();
       },
       error => console.dir(error)
     );
-
   }
 
 }
