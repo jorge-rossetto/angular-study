@@ -10,4 +10,4 @@
 
 ### Adição do suporte ao Materialize
 
-- Seguindo as instuções daqui: https://www.npmjs.com/package/angular2-materialize. obs: pulei a instalação do jQuery 2.2 e Hammer.JS por que já tinha versões mais recentes instaladas no projeto.
+- Seguindo as instuções daqui: https://www.npmjs.com/package/angular2-materialize.

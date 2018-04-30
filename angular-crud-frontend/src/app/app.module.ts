@@ -21,11 +21,11 @@ import { HttpClientModule } from '@angular/common/http';
     UsuarioReadAllComponent
   ],
   imports: [
+    MaterializeModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule,
-    MaterializeModule
+    AppRoutingModule
   ],
   providers: [UsuarioService],
   bootstrap: [AppComponent]
