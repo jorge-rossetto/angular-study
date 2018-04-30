@@ -13,6 +13,7 @@ export class UsuarioCreateOrUpdateComponent implements OnInit {
   id: any;
   updateMode: boolean;
   submitButtonTitle: string;
+  breadcrumbTitle: string;
   usuario: Usuario;
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private usuarioService: UsuarioService) {
@@ -21,6 +22,7 @@ export class UsuarioCreateOrUpdateComponent implements OnInit {
   ngOnInit() {
     this.storeIdParameter();
     this.setCreateOrUpdateModel();
+    this.setBreadcrumbTitle();
     this.setSubmitButtonTitle();
     this.initializeModel();
   }
@@ -39,6 +41,14 @@ export class UsuarioCreateOrUpdateComponent implements OnInit {
       this.submitButtonTitle = 'Alterar';
     } else {
       this.submitButtonTitle = 'Incluir';
+    }
+  }
+
+  setBreadcrumbTitle() {
+    if (this.updateMode) {
+      this.breadcrumbTitle = 'Alteração';
+    } else {
+      this.breadcrumbTitle = 'Inclusão';
     }
   }
 
