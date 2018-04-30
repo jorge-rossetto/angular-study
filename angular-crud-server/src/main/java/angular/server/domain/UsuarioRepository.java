@@ -1,6 +1,7 @@
 package angular.server.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,7 +25,8 @@ public class UsuarioRepository {
     }
 
     private Long nextId() {
-        return usuarios.size() + 1L;
+    	Long maiorId = Collections.max(usuarios.keySet());
+        return maiorId + 1L;
     }
 
     public List<Usuario> readAll() {
