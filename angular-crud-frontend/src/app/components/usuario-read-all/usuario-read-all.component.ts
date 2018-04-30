@@ -29,7 +29,7 @@ export class UsuarioReadAllComponent implements OnInit {
   onClickConfirmDelete() {
     this.usuarioService.delete(this.usuarioMarkedToDelete.id).subscribe(
       (response: Response) => {
-        console.log("delete OK");
+        console.log('delete OK');
         this.loadModel();
       },
       error => console.dir(error)
