@@ -17,6 +17,8 @@ export class UsuarioService {
     // const options = { params: new HttpParams().set('id', id.toString()), reportProgress: true };
     // console.log(options.params.toString());
 
+    // TODO tentar usar pipe() e logar os erros aqui
+
     constructor(private http: HttpClient) {
     }
 
@@ -28,17 +30,12 @@ export class UsuarioService {
         return this.http.get<Usuario>(this.resourceUrl + id);
     }
 
-    create(usuario: Usuario): void {
-        // TODO tentar usar pipe(), parece que eh o jeito mais moderno
-        this.http.post(this.resourceUrl, usuario).subscribe(
-            response => console.dir(response), error => console.dir(error)
-        );
+    create(usuario: Usuario) {
+        return this.http.post(this.resourceUrl, usuario);
     }
 
-    update(usuario: Usuario): void {
-        this.http.put(this.resourceUrl, usuario).subscribe(
-            response => console.dir(response), error => console.dir(error)
-        );
+    update(usuario: Usuario) {
+        return this.http.put(this.resourceUrl, usuario);
     }
 
     delete(id: number) {
