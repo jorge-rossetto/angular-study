@@ -1,4 +1,44 @@
-<ul>
-  <li><a routerLink="usuario-read-all">Usuário</a></li>
+<!-- https://github.com/InfomediaLtd/angular2-materialize/issues/374 -->
+<!-- http://materializecss.com/navbar.html -->
+<nav>
+  <div class="nav-wrapper">
+    <a class="brand-logo right">Angular Study</a>
+    <ul class="left hide-on-med-and-down">
+      <li>
+        <a class="dropdown-trigger" href="#!" data-activates="dropdownGestao" materialize="dropdown">Gestão
+          <i class="material-icons right">arrow_drop_down</i>
+        </a>
+      </li>
+      <li>
+        <a class="dropdown-trigger" href="#!" data-activates="dropdownOutraCoisa" materialize="dropdown">Outra Coisa
+          <i class="material-icons right">arrow_drop_down</i>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<ul id="dropdownGestao" class="dropdown-content">
+  <li>
+    <a routerLink="usuario-read-all">Usuário</a>
+  </li>
+  <li>
+    <a>Perfil</a>
+  </li>
 </ul>
+
+<ul id="dropdownOutraCoisa" class="dropdown-content">
+  <li>
+    <a>Outra Sub-coisa 1</a>
+  </li>
+  <li class="divider"></li>
+  <li>
+    <a>Outra Sub-coisa 2</a>
+  </li>
+  <li class="divider"></li>
+  <li>
+    <a>Outra Sub-coisa 3</a>
+  </li>
+</ul>
+
 <router-outlet></router-outlet>
