@@ -59,7 +59,7 @@
 <div id="confirmDeleteDialog" class="modal" materialize="modal">
   <div class="modal-content">
     <h4>Confirmação</h4>
-    <p>Deseja realmente excluir o(a) usuário(a) "{{ usuarioMarkedToDelete.nome }}"?</p>
+    <p>Deseja realmente excluir o(a) usuário(a) "{{ usuarioMarkedToDelete?.nome }}"?</p>
   </div>
   <div class="modal-footer">
     <a class="modal-action modal-close waves-effect waves-green btn" (click)="onClickConfirmDelete()"><i class="material-icons left">done</i>Sim</a>
