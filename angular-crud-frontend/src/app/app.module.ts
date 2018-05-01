@@ -11,6 +11,7 @@ import { UsuarioReadAllComponent } from './components/usuario-read-all/usuario-r
 
 import { UsuarioService } from './services/usuario.service';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -25,7 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxPaginationModule
   ],
   providers: [UsuarioService],
   bootstrap: [AppComponent]

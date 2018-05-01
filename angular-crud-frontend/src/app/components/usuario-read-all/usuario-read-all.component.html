@@ -1,4 +1,3 @@
-
 <!-- TODO mensagem nenhum usuario encontrado -->
 
 <!-- TODO exibir lista de usuarios em ordem alfabetica de nome -->
@@ -7,10 +6,10 @@
 
 <nav>
   <div class="nav-wrapper">
-      <a class="breadcrumb">Gestão</a>
-      <a class="breadcrumb">Usuário</a>
-      <a class="breadcrumb">Consulta</a>
-    </div>
+    <a class="breadcrumb">Gestão</a>
+    <a class="breadcrumb">Usuário</a>
+    <a class="breadcrumb">Consulta</a>
+  </div>
 </nav>
 
 <div class="container">
@@ -31,7 +30,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let usuario of usuarios | async">
+          <tr *ngFor="let usuario of usuarios | async | paginate: { itemsPerPage: 5, currentPage: p }">
             <td>{{ usuario.id }}</td>
             <td>{{ usuario.nome }}</td>
             <td>{{ usuario.email }}</td>
@@ -47,6 +46,10 @@
           </tr>
         </tbody>
       </table>
+
+      <!-- https://www.npmjs.com/package/ngx-pagination -->
+      <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Próxima"></pagination-controls>
+
       <div>
         <a class="btn-floating waves-effect waves-light red right" [routerLink]="['/usuario-create-or-update/']">
           <i class="material-icons">add</i>
@@ -62,7 +65,9 @@
     <p>Deseja realmente excluir o(a) usuário(a) "{{ usuarioMarkedToDelete?.nome }}"?</p>
   </div>
   <div class="modal-footer">
-    <a class="modal-action modal-close waves-effect waves-green btn" (click)="onClickConfirmDelete()"><i class="material-icons left">done</i>Sim</a>
-    <a class="modal-action modal-close waves-effect waves-green btn"><i class="material-icons left">cancel</i>Não</a>
+    <a class="modal-action modal-close waves-effect waves-green btn" (click)="onClickConfirmDelete()">
+      <i class="material-icons left">done</i>Sim</a>
+    <a class="modal-action modal-close waves-effect waves-green btn">
+      <i class="material-icons left">cancel</i>Não</a>
   </div>
 </div>
