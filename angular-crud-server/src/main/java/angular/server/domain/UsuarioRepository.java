@@ -10,7 +10,7 @@ import java.util.Map;
 public class UsuarioRepository {
 
     private static Map<Long, Usuario> usuarios = new HashMap<Long, Usuario>();
-    
+
     static {
         usuarios.put(1L, new Usuario(1L, "Jorge", "jorgerst@gmail.com", LocalDate.now().plusDays(2)));
         usuarios.put(2L, new Usuario(2L, "Leo", "leo@serpro.gov.br", LocalDate.now()));
@@ -19,15 +19,19 @@ public class UsuarioRepository {
         usuarios.put(5L, new Usuario(5L, "Coronel", "coronel@gmail.com", LocalDate.now().minusMonths(4)));
         usuarios.put(6L, new Usuario(6L, "Daniel", "daniel@serpro.gov.br", LocalDate.now().minusMonths(20)));
     }
-    
+
     public void create(Usuario usuario) {
         usuario.setId(nextId());
         usuarios.put(usuario.getId(), usuario);
     }
 
-	private Long nextId() {
-    	Long maiorId = Collections.max(usuarios.keySet());
-        return maiorId + 1L;
+    private Long nextId() {
+        if (usuarios.isEmpty()) {
+            return 1L;
+        } else {
+            Long maiorId = Collections.max(usuarios.keySet());
+            return maiorId + 1L;
+        }
     }
 
     public List<Usuario> readAll() {
