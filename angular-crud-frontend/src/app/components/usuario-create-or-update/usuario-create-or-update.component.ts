@@ -14,14 +14,14 @@ export class UsuarioCreateOrUpdateComponent implements OnInit {
   updateMode: boolean;
   submitButtonTitle: string;
   breadcrumbTitle: string;
-  usuario: Usuario;
+  usuario: Usuario = new Usuario();
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private usuarioService: UsuarioService) {
   }
 
   ngOnInit() {
     this.storeIdParameter();
-    this.setCreateOrUpdateModel();
+    this.setCreateOrUpdateMode();
     this.setBreadcrumbTitle();
     this.setSubmitButtonTitle();
     this.initializeModel();
@@ -29,19 +29,11 @@ export class UsuarioCreateOrUpdateComponent implements OnInit {
 
   storeIdParameter() {
     this.id = this.activatedRoute.snapshot.queryParams['id'];
-    console.log('query param "id":', this.id);
+    console.log('Query param "id":', this.id);
   }
 
-  setCreateOrUpdateModel() {
+  setCreateOrUpdateMode() {
     this.updateMode = isNumeric(this.id);
-  }
-
-  setSubmitButtonTitle() {
-    if (this.updateMode) {
-      this.submitButtonTitle = 'Alterar';
-    } else {
-      this.submitButtonTitle = 'Incluir';
-    }
   }
 
   setBreadcrumbTitle() {
@@ -52,19 +44,25 @@ export class UsuarioCreateOrUpdateComponent implements OnInit {
     }
   }
 
+  setSubmitButtonTitle() {
+    if (this.updateMode) {
+      this.submitButtonTitle = 'Alterar';
+    } else {
+      this.submitButtonTitle = 'Incluir';
+    }
+  }
+
   initializeModel() {
     if (this.updateMode) {
       this.initializeExistingModelById();
-    } else {
-      this.initializeNewModel();
     }
   }
 
   initializeExistingModelById() {
     this.usuarioService.readById(this.id).
       subscribe(
-        retorno => { console.log('successo: ', retorno); this.usuario = retorno; },
-        erro => console.log('erro: ', erro) // TODO não seria melhor tratar erros só nos services?
+        retorno => { console.log('Successo: ', retorno); this.usuario = retorno; },
+        erro => console.log('Erro: ', erro) // TODO não seria melhor tratar erros só nos services?
       );
 
     // TODO quando usuario passou um id que não tem nenhum usuario, mandar de volta pra pagina de consulta, com mensagem de erro
