@@ -1,8 +1,6 @@
-<!-- TODO mensagem nenhum usuario encontrado -->
-
 <!-- TODO exibir lista de usuarios em ordem alfabetica de nome por padrão, e tb implementar ordenacao por campo -->
-
 <!-- TODO usar o 'truncate' do materialize em algum campo que form mto grande -->
+
 <div class="section">
   <nav>
     <div class="nav-wrapper light-blue">
@@ -15,47 +13,48 @@
 
 <div class="container">
   <div class="row">
-    <h2>
-      <b>Usuários</b>
-    </h2>
-
     <div class="section">
 
-      <div class="input-field col s3 right">
-        <input type="text" placeholder="Filtrar por nome" [(ngModel)]="nomeFilter">
-        <i class="material-icons prefix">search</i>
+      <div class="center-align" *ngIf="!recordsFound">
+        Nenhum registro encontrado.
       </div>
 
-      <table class="highlight">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>E-mail</th>
-            <th>Data de Nascimento</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let usuario of usuarios | async | singleFieldFilter : 'nome' : nomeFilter | paginate: { itemsPerPage: 4, currentPage: p } ">
-            <td>{{ usuario.id }}</td>
-            <td>{{ usuario.nome }}</td>
-            <td>{{ usuario.email }}</td>
-            <td>{{ usuario.dataNascimento | date: 'dd/MM/yyyy' }}</td>
-            <td>
-              <a title="Editar" [routerLink]="['/usuario-create-or-update/']" [queryParams]="{id: usuario.id}">
-                <i class="material-icons">edit</i>
-              </a>
-              <a title="Excluir" class="modal-trigger" href="#confirmDeleteDialog" (click)="onClickDelete(usuario)">
-                <i class="material-icons">delete</i>
-              </a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="section center-align">
-      <!-- https://www.npmjs.com/package/ngx-pagination -->
-      <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Próxima"></pagination-controls>
+      <div *ngIf="recordsFound">
+        <div class="input-field col s3 right">
+          <input type="text" placeholder="Filtrar por nome" [(ngModel)]="nomeFilter">
+          <i class="material-icons prefix">search</i>
+        </div>
+
+        <table class="highlight">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>E-mail</th>
+              <th>Data de Nascimento</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let usuario of usuarios | singleFieldFilter : 'nome' : nomeFilter | paginate: { itemsPerPage: 4, currentPage: p } ">
+              <td>{{ usuario.id }}</td>
+              <td>{{ usuario.nome }}</td>
+              <td>{{ usuario.email }}</td>
+              <td>{{ usuario.dataNascimento | date: 'dd/MM/yyyy' }}</td>
+              <td>
+                <a title="Editar" [routerLink]="['/usuario-create-or-update/']" [queryParams]="{id: usuario.id}">
+                  <i class="material-icons">edit</i>
+                </a>
+                <a title="Excluir" class="modal-trigger" href="#confirmDeleteDialog" (click)="onClickDelete(usuario)">
+                  <i class="material-icons">delete</i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- https://www.npmjs.com/package/ngx-pagination -->
+        <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Próxima" class="center-align"></pagination-controls>
+      </div>
 
       <a class="btn-floating waves-effect waves-light red right" [routerLink]="['/usuario-create-or-update/']">
         <i class="material-icons">add</i>

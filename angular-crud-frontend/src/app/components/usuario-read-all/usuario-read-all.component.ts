@@ -9,9 +9,10 @@ import { Observable } from 'rxjs/Observable';
 })
 export class UsuarioReadAllComponent implements OnInit {
 
-  usuarios: Observable<Usuario[]>;
+  usuarios: Usuario[];
   usuarioMarkedToDelete: Usuario;
   nomeFilter: string;
+  recordsFound: boolean;
 
   constructor(private usuarioService: UsuarioService) { }
 
@@ -20,7 +21,12 @@ export class UsuarioReadAllComponent implements OnInit {
   }
 
   loadModel() {
-    this.usuarios = this.usuarioService.readAll();
+    this.usuarioService.readAll().subscribe(
+      (usuariosRetornados: Usuario[]) => { 
+        this.usuarios = usuariosRetornados;
+        this.recordsFound = (this.usuarios.length > 0);
+      }
+    );
   }
 
   onClickDelete(usuario: Usuario) {
