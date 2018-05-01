@@ -3,54 +3,59 @@
 <!-- TODO exibir lista de usuarios em ordem alfabetica de nome -->
 
 <!-- TODO usar o 'truncate' do materialize em algum campo que form mto grande -->
-
-<nav>
-  <div class="nav-wrapper">
-    <a class="breadcrumb">Gestão</a>
-    <a class="breadcrumb">Usuário</a>
-    <a class="breadcrumb">Consulta</a>
-  </div>
-</nav>
+<div class="section">
+  <nav>
+    <div class="nav-wrapper">
+      <a class="breadcrumb">Gestão</a>
+      <a class="breadcrumb">Usuário</a>
+      <a class="breadcrumb">Consulta</a>
+    </div>
+  </nav>
+</div>
 
 <div class="container">
   <div class="row">
     <div class="col s12">
       <div class="row">
-        <h2>
-          <b>Usuários</b>
-        </h2>
+        <div class="section">
+          <h2>
+            <b>Usuários</b>
+          </h2>
+        </div>
       </div>
-      <table class="highlight">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>E-mail</th>
-            <th>Data de Nascimento</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let usuario of usuarios | async | paginate: { itemsPerPage: 5, currentPage: p }">
-            <td>{{ usuario.id }}</td>
-            <td>{{ usuario.nome }}</td>
-            <td>{{ usuario.email }}</td>
-            <td>{{ usuario.dataNascimento | date: 'dd/MM/yyyy' }}</td>
-            <td>
-              <a title="Editar" [routerLink]="['/usuario-create-or-update/']" [queryParams]="{id: usuario.id}">
-                <i class="material-icons">edit</i>
-              </a>
-              <a title="Excluir" class="modal-trigger" href="#confirmDeleteDialog" (click)="onClickDelete(usuario)">
-                <i class="material-icons">delete</i>
-              </a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      <!-- https://www.npmjs.com/package/ngx-pagination -->
-      <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Próxima"></pagination-controls>
-
-      <div>
+      <div class="section">
+        <table class="highlight">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>E-mail</th>
+              <th>Data de Nascimento</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let usuario of usuarios | async | paginate: { itemsPerPage: 5, currentPage: p }">
+              <td>{{ usuario.id }}</td>
+              <td>{{ usuario.nome }}</td>
+              <td>{{ usuario.email }}</td>
+              <td>{{ usuario.dataNascimento | date: 'dd/MM/yyyy' }}</td>
+              <td>
+                <a title="Editar" [routerLink]="['/usuario-create-or-update/']" [queryParams]="{id: usuario.id}">
+                  <i class="material-icons">edit</i>
+                </a>
+                <a title="Excluir" class="modal-trigger" href="#confirmDeleteDialog" (click)="onClickDelete(usuario)">
+                  <i class="material-icons">delete</i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="section">
+        <!-- https://www.npmjs.com/package/ngx-pagination -->
+        <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Próxima"></pagination-controls>
+      </div>
+      <div class="section">
         <a class="btn-floating waves-effect waves-light red right" [routerLink]="['/usuario-create-or-update/']">
           <i class="material-icons">add</i>
         </a>
