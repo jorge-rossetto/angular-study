@@ -5,7 +5,7 @@
 <!-- TODO usar o 'truncate' do materialize em algum campo que form mto grande -->
 <div class="section">
   <nav>
-    <div class="nav-wrapper">
+    <div class="nav-wrapper light-blue">
       <a class="breadcrumb">Gestão</a>
       <a class="breadcrumb">Usuário</a>
       <a class="breadcrumb">Consulta</a>
@@ -56,8 +56,7 @@
     <div class="section center-align">
       <!-- https://www.npmjs.com/package/ngx-pagination -->
       <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Próxima"></pagination-controls>
-    </div>
-    <div class="section">
+
       <a class="btn-floating waves-effect waves-light red right" [routerLink]="['/usuario-create-or-update/']">
         <i class="material-icons">add</i>
       </a>
