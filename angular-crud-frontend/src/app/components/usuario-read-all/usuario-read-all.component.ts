@@ -11,6 +11,7 @@ export class UsuarioReadAllComponent implements OnInit {
 
   usuarios: Observable<Usuario[]>;
   usuarioMarkedToDelete: Usuario;
+  nomeFilter: string;
 
   constructor(private usuarioService: UsuarioService) { }
 
