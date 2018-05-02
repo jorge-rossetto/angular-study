@@ -22,7 +22,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let usuario of usuarios | async">
+          <tr *ngFor="let usuario of usuarios | async | paginate: { itemsPerPage: 4, currentPage: p } ">
             <td>{{ usuario.id }}</td>
             <td>{{ usuario.nome }}</td>
             <td>{{ usuario.email }}</td>
@@ -39,10 +39,12 @@
         </tbody>
       </table>
 
-      <a class="btn-floating waves-effect waves-light red right" [routerLink]="['/usuario-create-or-update/']">
-        <i class="material-icons">add</i>
-      </a>
+      <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Próxima" class="center-align"></pagination-controls>
     </div>
+
+    <a class="btn-floating waves-effect waves-light red right" [routerLink]="['/usuario-create-or-update/']">
+      <i class="material-icons">add</i>
+    </a>
   </div>
 </div>
 

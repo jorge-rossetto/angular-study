@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SingleFieldFilterPipe } from './infra/single-field-filter.pipe';
 import { UsuarioReadAllBasicoComponent } from './components/usuario-read-all-basico/usuario-read-all-basico.component';
+import { UsuarioReadAllPaginacaoComponent } from './components/usuario-read-all-paginacao/usuario-read-all-paginacao.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { UsuarioReadAllBasicoComponent } from './components/usuario-read-all-bas
     UsuarioReadAllComponent,
     SingleFieldFilterPipe,
     UsuarioReadAllBasicoComponent,
+    UsuarioReadAllPaginacaoComponent,
   ],
   imports: [
     MaterializeModule,
