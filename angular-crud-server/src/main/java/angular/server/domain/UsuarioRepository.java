@@ -18,6 +18,8 @@ public class UsuarioRepository {
         usuarios.put(4L, new Usuario(4L, "Altair", "altair@serpro.gov.br", LocalDate.now().minusYears(3)));
         usuarios.put(5L, new Usuario(5L, "Coronel", "coronel@gmail.com", LocalDate.now().minusMonths(4)));
         usuarios.put(6L, new Usuario(6L, "Daniel", "daniel@serpro.gov.br", LocalDate.now().minusMonths(20)));
+        
+//        cadastrarMaisUmMonteDeUsuarios();
     }
 
     public void create(Usuario usuario) {
@@ -25,7 +27,7 @@ public class UsuarioRepository {
         usuarios.put(usuario.getId(), usuario);
     }
 
-    private Long nextId() {
+    private static Long nextId() {
         if (usuarios.isEmpty()) {
             return 1L;
         } else {
@@ -48,6 +50,21 @@ public class UsuarioRepository {
 
     public void delete(Long id) {
         usuarios.remove(id);
+    }
+    
+    private static void cadastrarMaisUmMonteDeUsuarios() {
+        
+        LocalDate dataNascimento = LocalDate.now();
+        
+        for (long nextId = nextId(); nextId < 10000; nextId++) {
+            Usuario usuario = new Usuario();
+            usuario.setId(nextId);
+            usuario.setNome("Usuário " + nextId);
+            usuario.setEmail("email@usuario" + nextId);
+            usuario.setDataNascimento(dataNascimento);
+            
+            usuarios.put(nextId, usuario);
+        }
     }
 
 }
