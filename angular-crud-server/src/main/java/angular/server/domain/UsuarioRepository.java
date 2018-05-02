@@ -52,6 +52,7 @@ public class UsuarioRepository {
         usuarios.remove(id);
     }
     
+    @SuppressWarnings("unused")
     private static void cadastrarMaisUmMonteDeUsuarios() {
         
         LocalDate dataNascimento = LocalDate.now();
