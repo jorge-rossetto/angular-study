@@ -16,6 +16,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { SingleFieldFilterPipe } from './infra/single-field-filter.pipe';
 import { UsuarioReadAllBasicoComponent } from './components/usuario-read-all-basico/usuario-read-all-basico.component';
 import { UsuarioReadAllPaginacaoComponent } from './components/usuario-read-all-paginacao/usuario-read-all-paginacao.component';
+import { UsuarioReadAllNenhumRegistroEncontradoComponent } from './components/usuario-read-all-nenhum-registro-encontrado/usuario-read-all-nenhum-registro-encontrado.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { UsuarioReadAllPaginacaoComponent } from './components/usuario-read-all-
     SingleFieldFilterPipe,
     UsuarioReadAllBasicoComponent,
     UsuarioReadAllPaginacaoComponent,
+    UsuarioReadAllNenhumRegistroEncontradoComponent,
   ],
   imports: [
     MaterializeModule,
