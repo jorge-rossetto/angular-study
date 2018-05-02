@@ -14,6 +14,7 @@ import { UsuarioService } from './services/usuario.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SingleFieldFilterPipe } from './infra/single-field-filter.pipe';
+import { UsuarioReadAllBasicoComponent } from './components/usuario-read-all-basico/usuario-read-all-basico.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { SingleFieldFilterPipe } from './infra/single-field-filter.pipe';
     UsuarioCreateOrUpdateComponent,
     UsuarioReadAllComponent,
     SingleFieldFilterPipe,
+    UsuarioReadAllBasicoComponent,
   ],
   imports: [
     MaterializeModule,

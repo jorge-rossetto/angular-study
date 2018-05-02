@@ -1,0 +1,59 @@
+<div class="section">
+  <nav>
+    <div class="nav-wrapper light-blue">
+      <a class="breadcrumb">Gestão</a>
+      <a class="breadcrumb">Usuário</a>
+      <a class="breadcrumb">Consulta</a>
+    </div>
+  </nav>
+</div>
+
+<div class="section">
+  <div class="container">
+    <div class="row">
+
+      <table class="highlight">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Data de Nascimento</tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let usuario of usuarios | async">
+            <td>{{ usuario.id }}</td>
+            <td>{{ usuario.nome }}</td>
+            <td>{{ usuario.email }}</td>
+            <td>{{ usuario.dataNascimento | date: 'dd/MM/yyyy' }}</td>
+            <td>
+              <a title="Editar" [routerLink]="['/usuario-create-or-update/']" [queryParams]="{id: usuario.id}">
+                <i class="material-icons">edit</i>
+              </a>
+              <a title="Excluir" class="modal-trigger" href="#confirmDeleteDialog" (click)="onClickDelete(usuario)">
+                <i class="material-icons">delete</i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <a class="btn-floating waves-effect waves-light red right" [routerLink]="['/usuario-create-or-update/']">
+        <i class="material-icons">add</i>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div id="confirmDeleteDialog" class="modal" materialize="modal">
+  <div class="modal-content">
+    <h4>Confirmação</h4>
+    <p>Deseja realmente excluir o(a) usuário(a) "{{ usuarioMarkedToDelete?.nome }}"?</p>
+  </div>
+  <div class="modal-footer">
+    <a class="modal-action modal-close waves-effect waves-green btn" (click)="onClickConfirmDelete()">
+      <i class="material-icons left">done</i>Sim</a>
+    <a class="modal-action modal-close waves-effect waves-green btn">
+      <i class="material-icons left">cancel</i>Não</a>
+  </div>
+</div>
