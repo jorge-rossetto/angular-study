@@ -17,6 +17,7 @@ import { SingleFieldFilterPipe } from './infra/single-field-filter.pipe';
 import { UsuarioReadAllBasicoComponent } from './components/usuario-read-all-basico/usuario-read-all-basico.component';
 import { UsuarioReadAllPaginacaoComponent } from './components/usuario-read-all-paginacao/usuario-read-all-paginacao.component';
 import { UsuarioReadAllNenhumRegistroEncontradoComponent } from './components/usuario-read-all-nenhum-registro-encontrado/usuario-read-all-nenhum-registro-encontrado.component';
+import { UsuarioReadAllFiltroComponent } from './components/usuario-read-all-filtro/usuario-read-all-filtro.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { UsuarioReadAllNenhumRegistroEncontradoComponent } from './components/us
     UsuarioReadAllBasicoComponent,
     UsuarioReadAllPaginacaoComponent,
     UsuarioReadAllNenhumRegistroEncontradoComponent,
+    UsuarioReadAllFiltroComponent
   ],
   imports: [
     MaterializeModule,
