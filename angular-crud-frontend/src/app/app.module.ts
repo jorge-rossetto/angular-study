@@ -1,3 +1,4 @@
+import { Ng2OrderModule } from 'ng2-order-pipe';
 import { MaterializeModule } from 'angular2-materialize';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -28,7 +29,8 @@ import { SingleFieldFilterPipe } from './infra/single-field-filter.pipe';
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    Ng2OrderModule
   ],
   providers: [UsuarioService],
   bootstrap: [AppComponent]

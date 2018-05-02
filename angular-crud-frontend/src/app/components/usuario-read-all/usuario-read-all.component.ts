@@ -13,6 +13,8 @@ export class UsuarioReadAllComponent implements OnInit {
   usuarioMarkedToDelete: Usuario;
   nomeFilter: string;
   recordsFound: boolean;
+  sortField: string = 'nome';
+  sortReverse: boolean = false;
 
   constructor(private usuarioService: UsuarioService) { }
 
@@ -22,7 +24,7 @@ export class UsuarioReadAllComponent implements OnInit {
 
   loadModel() {
     this.usuarioService.readAll().subscribe(
-      (usuariosRetornados: Usuario[]) => { 
+      (usuariosRetornados: Usuario[]) => {
         this.usuarios = usuariosRetornados;
         this.recordsFound = (this.usuarios.length > 0);
       }
@@ -43,4 +45,8 @@ export class UsuarioReadAllComponent implements OnInit {
     );
   }
 
+  sort(field) {
+    this.sortField = field;
+    this.sortReverse = !this.sortReverse;
+  }
 }

@@ -25,17 +25,47 @@
           <i class="material-icons prefix">search</i>
         </div>
 
+        <!-- sort: -->
+        <!-- https://ciphertrick.com/2017/08/01/search-sort-pagination-in-angular/ -->
         <table class="highlight">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Nome</th>
-              <th>E-mail</th>
-              <th>Data de Nascimento</th>
+              <th (click)="sort('id')">ID
+                <span *ngIf="sortField =='id' && !sortReverse">
+                  <i class="material-icons">arrow_downward</i>
+                </span>
+                <span *ngIf="sortField =='id' && sortReverse">
+                  <i class="material-icons">arrow_upward</i>
+                </span>
+              </th>
+              <th (click)="sort('nome')">Nome
+                <span *ngIf="sortField =='nome' && !sortReverse">
+                  <i class="material-icons">arrow_downward</i>
+                </span>
+                <span *ngIf="sortField =='nome' && sortReverse">
+                  <i class="material-icons">arrow_upward</i>
+                </span>
+              </th>
+              <th (click)="sort('email')">E-mail
+                <span *ngIf="sortField =='email' && !sortReverse">
+                  <i class="material-icons">arrow_downward</i>
+                </span>
+                <span *ngIf="sortField =='email' && sortReverse">
+                  <i class="material-icons">arrow_upward</i>
+                </span>
+              </th>
+              <th (click)="sort('dataNascimento')">Data de Nascimento
+                <span *ngIf="sortField =='dataNascimento' && !sortReverse">
+                  <i class="material-icons">arrow_downward</i>
+                </span>
+                <span *ngIf="sortField =='dataNascimento' && sortReverse">
+                  <i class="material-icons">arrow_upward</i>
+                </span>
+              </th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let usuario of usuarios | singleFieldFilter : 'nome' : nomeFilter | paginate: { itemsPerPage: 4, currentPage: p } ">
+            <tr *ngFor="let usuario of usuarios | orderBy: sortField : sortReverse | singleFieldFilter : 'nome' : nomeFilter | paginate: { itemsPerPage: 4, currentPage: p } ">
               <td>{{ usuario.id }}</td>
               <td>{{ usuario.nome }}</td>
               <td>{{ usuario.email }}</td>
