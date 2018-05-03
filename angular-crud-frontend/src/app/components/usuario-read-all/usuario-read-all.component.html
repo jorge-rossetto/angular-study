@@ -64,6 +64,9 @@
             </tr>
           </thead>
           <tbody>
+            
+            <!-- https://offering.solutions/blog/articles/2016/11/21/how-to-implement-a-table-filter-in-angular-2/ -->
+            
             <tr *ngFor="let usuario of usuarios | orderBy: sortField : sortReverse | singleFieldFilter : 'nome' : nomeFilter | paginate: { itemsPerPage: 4, currentPage: p } ">
               <td>{{ usuario.id }}</td>
               <td>{{ usuario.nome }}</td>

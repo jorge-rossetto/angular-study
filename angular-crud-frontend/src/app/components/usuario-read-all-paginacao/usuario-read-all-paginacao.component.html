@@ -39,7 +39,10 @@
         </tbody>
       </table>
 
+      <!-- https://www.npmjs.com/package/ngx-pagination -->
+      
       <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Próxima" class="center-align"></pagination-controls>
+      
     </div>
 
     <a class="btn-floating waves-effect waves-light red right" [routerLink]="['/usuario-create-or-update/']">
