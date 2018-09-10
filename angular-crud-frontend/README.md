@@ -11,3 +11,8 @@
 ### Adição do suporte ao Materialize
 
 - Seguindo as instuções daqui: https://www.npmjs.com/package/angular2-materialize.
+
+### Start do projeto local
+
+- Na primeira vez, executar na pasta do projeto: npm install
+- Nas próximas vezes: ng serve. Acessar localhost:4200
